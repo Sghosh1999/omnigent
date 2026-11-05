@@ -5697,7 +5697,11 @@ function NewChatLandingContent({
       const wasViewing = removeLocalConversation(localConv.tempConvId);
       // Gated on `wasViewing` (not `onScreenRef` — the landing already unmounted).
       if (wasViewing && stillOnTempRoute) {
-        navigate(returnToCanvas ? { pathname: "/", search: `?${searchParams.toString()}` } : "/");
+        navigate(
+          returnToCanvas || siblingSourceId
+            ? { pathname: "/", search: `?${searchParams.toString()}` }
+            : "/",
+        );
       }
     };
     try {
