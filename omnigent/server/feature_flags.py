@@ -25,6 +25,7 @@ class Feature(StrEnum):
 
     SANDBOX_PROFILES = "sandbox_profiles"
     SESSION_ORCHESTRATION = "session_orchestration"
+    PEER_SESSION_MESSAGING = "peer_session_messaging"
     CODEX_PLAN_AT_LAUNCH = "codex_plan_at_launch"
     USAGE_PAGE = "usage_page"
     HARNESS_INSTALL = "harness_install"
@@ -73,6 +74,17 @@ FEATURE_DEFINITIONS: tuple[FeatureDefinition, ...] = (
         review_by_release="0.22.0",
         # The Automations page offers trigger templates only when managers can
         # start workers.
+        default_enabled=True,
+    ),
+    FeatureDefinition(
+        feature=Feature.PEER_SESSION_MESSAGING,
+        description=(
+            "sys_session_message to non-child sessions; both the server and the runner "
+            "must leave it enabled"
+        ),
+        owner="server",
+        review_by_release="0.24.0",
+        frontend_visible=False,
         default_enabled=True,
     ),
     FeatureDefinition(
